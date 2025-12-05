@@ -3,6 +3,7 @@
   'label' => null,
   'type' => 'text',
   'value' => '',
+  'placeholder' => '',
   'required' => false,
 ])
 
@@ -12,9 +13,9 @@
   @endif
 
   <input
-    id="{{ $name }}"
     name="{{ $name }}"
     type="{{ $type }}"
+    placeholder="{{ $placeholder }}"
     value="{{ old($name, $value) }}"
     {{ $required ? 'required' : '' }}
     {{ $attributes->merge(['class' => 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-200']) }}

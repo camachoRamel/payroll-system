@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('payroll_records', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->timestamp('period');
-            $table->unsignedInteger('base_salary');
+            $table->string('period');
             $table->unsignedInteger('allowance');
             $table->unsignedInteger('deductions');
-            $table->unsignedInteger('net_salary');
+            $table->integer('net_salary');
             $table->foreign('employee_id')->references('id')->on('employees');
-            // $table->string('status');
+            $table->string('status')->default('pending');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -1,7 +1,6 @@
-<x-layouts.app>
+<x-layouts.default>
   <div class="max-w-4xl w-full bg-white shadow-lg rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
 
-    <!-- Left: branding -->
     <div class="hidden md:flex flex-col items-center justify-center p-8 bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white">
       <div class="mb-6">
         <svg class="w-20 h-20" viewBox="0 0 24 24" fill="none">
@@ -15,28 +14,30 @@
       </p>
     </div>
 
-    <!-- Right: Register Form -->
     <div class="p-8">
       <div class="mb-6">
         <h1 class="text-2xl font-bold">Create an account</h1>
         <p class="text-sm text-slate-500 mt-1">Fill in your details below.</p>
       </div>
 
-      <form method="POST" action="{{ route('register') }}" class="space-y-4">
+    <form method="POST" action="{{ route('register') }}" class="space-y-4">
         @csrf
+        <x-input name="first_name" type="text" label="First Name" :value="old('first_name')" required />
+        <x-input name="middle_name" type="text" label="Middle Name" :value="old('middle_name')" required />
+        <x-input name="last_name" type="text" label="Last Name" :value="old('last_name')" required />
 
-        <x-input name="name" type="text" label="Full Name" :value="old('name')" required autofocus />
-        <x-input name="email" type="email" label="Email" :value="old('email')" required />
+        <x-input name="username" type="text" label="Username" :value="old('username')" required />
+
         <x-input name="password" type="password" label="Password" required />
-        <x-input name="password_confirmation" type="password" label="Confirm Password" required />
 
         <div>
-          <button type="submit"
+            <button type="submit"
             class="w-full py-2 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300">
             Create account
-          </button>
+            </button>
         </div>
-      </form>
+    </form>
+
 
       <div class="mt-6 text-center text-sm text-slate-500">
         Already have an account?
@@ -44,4 +45,4 @@
       </div>
     </div>
   </div>
-</x-layouts.app>
+</x-layouts.default>

@@ -16,8 +16,7 @@ class PayrollTableSeeder extends Seeder
         DB::table('payroll_records')->insert([
             [
                 'employee_id' => 1,
-                'period'      => now(),
-                'base_salary' => 28000,
+                'period'      => '2025/2',
                 'allowance'   => 1500,
                 'deductions'  => 1000,
                 'net_salary'  => 28500,
@@ -26,8 +25,7 @@ class PayrollTableSeeder extends Seeder
             ],
             [
                 'employee_id' => 2,
-                'period'      => now(),
-                'base_salary' => 35000,
+                'period'      => '2025/1',
                 'allowance'   => 2500,
                 'deductions'  => 2000,
                 'net_salary'  => 35500,

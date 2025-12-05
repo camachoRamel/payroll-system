@@ -7,6 +7,6 @@
     <title>Payroll system</title>
     @vite('resources/css/app.css')</head>
 <body>
-
+    <a href="{{route('logout')}}">Logout</a>
 </body>
 </html>
