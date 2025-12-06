@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -31,10 +32,15 @@ class LoginController extends Controller
         {
             $request->session()->regenerate();
             if(Auth::user()->role === 1){
+                Log::notice('Employer Successfully Logged in');
                 return redirect()->route('employer.dashboard');
+
+            }else {
+                Log::notice('Employee Successfully Logged in');
+                return redirect()->route('employee.dashboard');
+
             }
         }
-
         return redirect('/')->with('error', 'Incorrect password or username');
     }
     public function register(Request $request)
@@ -51,6 +57,7 @@ class LoginController extends Controller
 
         User::create($validated);
 
+        Log::notice('Employer has created a new account');
         return redirect('/')->with('success', 'Account successfully created.');
     }
 
@@ -60,6 +67,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerate();
 
+        Log::notice('Employer logged out');
         return redirect('/');
     }
 }

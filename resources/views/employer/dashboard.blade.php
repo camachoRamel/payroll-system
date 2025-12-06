@@ -13,14 +13,14 @@
         {{-- Total Payroll --}}
         <div class="bg-white rounded-xl shadow-sm p-6">
             <p class="text-slate-700 font-semibold">Total Payroll</p>
-            <div class="text-3xl font-bold mt-1">${{ $payroll_records->sum('net_salary') }}</div>
+            <div class="text-3xl font-bold mt-1">${{ number_format($payroll_records->sum('net_salary'), 2) }}</div>
             <p class="text-sm text-slate-500">{{ $payroll_records->count() }} records</p>
         </div>
 
         {{-- Avg Salary --}}
         <div class="bg-white rounded-xl shadow-sm p-6">
             <p class="text-slate-700 font-semibold">Avg Salary</p>
-            <div class="text-3xl font-bold mt-1">${{ $employees->average('base_salary') }}</div>
+            <div class="text-3xl font-bold mt-1">${{ number_format($employees->average('base_salary'), 2) }}</div>
             <p class="text-sm text-slate-500">per employee</p>
         </div>
     </div>
@@ -42,7 +42,7 @@
                         <p class="text-sm text-slate-500"> {{ $emp->position }} </p>
                     </div>
                     <div class="text-right">
-                        <p class="font-semibold text-green-500 text-sm">$ {{ $emp->base_salary }} </p>
+                        <p class="font-semibold text-green-500 text-sm">$ {{ number_format($emp->base_salary, 2) }} </p>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                         <p class="text-sm text-slate-500"> {{ $rec->period }} </p>
                     </div>
                     <div class="text-right text-green-600 font-semibold">
-                        $ {{ $rec->net_salary }} <span class="text-green-500 text-sm"> {{ $rec->status }} </span>
+                        $ {{ number_format($rec->net_salary, 2) }} <span class="text-green-500 text-sm"> {{ $rec->status }} </span>
                     </div>
                 </div>
 

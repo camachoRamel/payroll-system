@@ -16,8 +16,7 @@
     <div class="flex items-center gap-3">
         <p class="text-lg font-semibold text-slate-800">{{ $name }}</p>
 
-        <span class="text-xs
-            {{ $status === 'active' ? 'bg-green-100 text-green-700' : 'bg-slate-200 text-slate-600' }}
+        <span class="text-xs bg-green-100 text-green-700
             px-2 py-1 rounded-full capitalize">
             {{ $status }}
         </span>
@@ -60,11 +59,6 @@
 
     {{-- Action Buttons --}}
     <div class="flex items-center gap-3 absolute right-6 top-6">
-
-        {{-- Edit --}}
-        <button class="bg-white border border-slate-200 rounded-lg px-2 py-1 hover:bg-slate-50 transition">
-            <i class="hgi hgi-stroke hgi-pencil-edit-02 text-slate-600 font-bold"></i>
-        </button>
 
         {{-- Delete --}}
         <form action="{{ route('employer.deletePayroll', $id) }}" method="POST">

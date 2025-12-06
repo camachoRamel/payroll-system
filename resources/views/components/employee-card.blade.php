@@ -47,9 +47,9 @@
     <div class="flex items-center gap-3 absolute right-6 top-6">
 
         {{-- Edit --}}
-        <button class="bg-white border border-slate-200 rounded-lg px-2 py-1 hover:bg-slate-50 transition">
+        <a href="{{ route('employer.editEmployeeForm', $id) }}" class="bg-white border border-slate-200 rounded-lg px-2 py-1 hover:bg-slate-50 transition">
             <i class="hgi hgi-stroke hgi-pencil-edit-02 text-slate-600 font-bold"></i>
-        </button>
+        </a>
 
         {{-- Delete --}}
         <form action="{{ route('employer.deleteEmployee', $id) }}" method="POST">

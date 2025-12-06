@@ -41,8 +41,8 @@ class PayrollRecordController extends Controller
             'netSalary' => 'required'
         ]);
 
-        // convert to float
-        $temp = floatval($validated['netSalary']);
+        // remove comma from the string then convert it to float
+        $temp = floatval(str_replace(",", "", $validated['netSalary']));
 
         PayrollRecord::create([
             'employee_id' => $validated['employee'],
@@ -55,6 +55,14 @@ class PayrollRecordController extends Controller
         return redirect()->route('employer.payroll')->with('success', 'Payroll Record created.');
     }
 
+    public function editPayrollForm($id)
+    {
+        $payroll = PayrollRecord::find($id);
+        $employees = Employee::where('employer_id', Auth::id())->get();
+
+        return view('employer.edit-payroll', compact('payroll', 'employees'));
+    }
+
     public function deletePayroll($id)
     {
         $employee = PayrollRecord::find($id)->delete();
@@ -62,7 +70,7 @@ class PayrollRecordController extends Controller
         return redirect()->route('employer.payroll')->with('success', 'Payroll Record Deleted');
     }
 
-    public function getEmployee(int $employeeId)
+    public function getEmployee($employeeId)
     {
         $employee = Employee::find($employeeId);
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('deductions');
             $table->integer('net_salary');
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->string('status')->default('pending');
+            $table->string('status')->default('paid');
             $table->timestamps();
             $table->softDeletes();
         });
